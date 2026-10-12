@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Гид по прическам и цвету волос — персональный подбор</title>
+<meta name="description" content="Интерактивный гид: подберите стрижку и оттенок волос по форме лица и подтону кожи. Тренды, советы стилистов, уход и чек-лист для салона.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M16 4c-5 0-9 4-9 9 0 6 3 8 4 8s2-1 2-3c0-2 1-3 3-3s3 1 3 3c0 2 1 3 2 3s4-2 4-8c0-5-4-9-9-9z' fill='%23b06d3c'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,600&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root,
+[data-theme='light'] {
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+  --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+  --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+  --text-hero: clamp(2.8rem, 1rem + 6vw, 6rem);
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+  --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+  --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+  --color-bg: #faf6f0;
+  --color-surface: #fffcf7;
+  --color-surface-2: #f5ede3;
+  --color-surface-offset: #f1e6d8;
+  --color-divider: #e7d9c8;
+  --color-border: #d8c4ab;
+  --color-text: #2e2418;
+  --color-text-muted: #7c6a54;
+  --color-text-faint: #7a6242;
+  --color-primary: #9a5b28;
+  --color-primary-hover: #7c471d;
+  --color-primary-highlight: #f0e2d0;
+  --color-accent: #b06d3c;
+  --btn-text: #fff8ef;
+  --check-mark: #fff8ef;
+  --radius-sm: 0.375rem; --radius-md: 0.5rem; --radius-lg: 0.75rem; --radius-xl: 1.25rem; --radius-full: 9999px;
+  --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-sm: 0 1px 3px rgba(46,36,24,0.07);
+  --shadow-md: 0 4px 14px rgba(46,36,24,0.09);
+  --shadow-lg: 0 12px 32px rgba(46,36,24,0.14);
+  --font-display: 'Zodiak', 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'General Sans', 'Jost', 'Helvetica Neue', sans-serif;
+}
+[data-theme='dark'] {
+  --color-bg: #1a1510;
+  --color-surface: #221b14;
+  --color-surface-2: #2a2118;
+  --color-surface-offset: #322819;
+  --color-divider: #3a2d1e;
+  --color-border: #4d3d28;
+  --color-text: #e8dcc9;
+  --color-text-faint: #9c8a72;
+  --color-text-muted: #c0aa85;
+  --color-primary: #d29a5e;
+  --color-primary-hover: #e5b57e;
+  --color-primary-highlight: #3d2f1e;
+  --color-accent: #c98a4b;
+  --btn-text: #1a1510;
+  --check-mark: #1a1510;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 14px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.5);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  -webkit-text-size-adjust: none; text-size-adjust: none;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth; scroll-padding-top: var(--space-16);
+}
+body {
+  min-height: 100dvh; line-height: 1.6;
+  font-family: var(--font-body); font-size: var(--text-base);
+  color: var(--color-text); background-color: var(--color-bg);
+}
+img, svg { display: block; max-width: 100%; height: auto; }
+button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
+h1, h2, h3, h4 { text-wrap: balance; line-height: 1.15; }
+p, li { text-wrap: pretty; max-width: 72ch; }
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+a, button, input, select, textarea { transition: color var(--transition-interactive), background var(--transition-interactive), border-color var(--transition-interactive), box-shadow var(--transition-interactive); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* header */
+.header {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in oklab, var(--color-bg) 92%, transparent);
+  backdrop-filter: blur(14px); border-bottom: 1px solid var(--color-divider);
+}
+.header-inner {
+  max-width: 1080px; margin: 0 auto; padding: var(--space-3) var(--space-6);
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+}
+.logo { display: flex; align-items: center; gap: var(--space-2); font-family: var(--font-display); font-weight: 600; font-size: var(--text-lg); color: var(--color-text); text-decoration: none; }
+.logo svg { color: var(--color-accent); }
+.nav { display: flex; gap: var(--space-5); flex-wrap: wrap; }
+.nav a { font-size: var(--text-sm); color: var(--color-text-muted); text-decoration: none; }
+.nav a:hover { color: var(--color-primary); }
+.theme-btn { color: var(--color-text-muted); padding: var(--space-1); border-radius: var(--radius-full); }
+.theme-btn:hover { color: var(--color-primary); }
+
+/* hero */
+.hero {
+  max-width: 1080px; margin: 0 auto; padding: clamp(var(--space-12), 6vw, var(--space-24)) var(--space-6) var(--space-10);
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: var(--space-12); align-items: center;
+}
+.hero h1 { font-family: var(--font-display); font-size: var(--text-hero); font-weight: 500; line-height: 1.08; letter-spacing: -0.01em; }
+.hero h1 em { font-style: italic; color: var(--color-accent); }
+.hero-lead { margin-top: var(--space-5); font-size: var(--text-lg); color: var(--color-text-muted); max-width: 46ch; }
+.hero-cta { margin-top: var(--space-8); display: flex; gap: var(--space-4); flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  background: var(--color-primary); color: var(--btn-text, #fff8ef); font-size: var(--text-sm); font-weight: 600;
+  padding: var(--space-3) var(--space-6); border-radius: var(--radius-full); text-decoration: none;
+  box-shadow: var(--shadow-md);
+}
+[data-theme='dark'] .btn-primary { background: #8a5320; color: #fff8ef !important; }
+.btn-primary:hover { background: var(--color-primary-hover); }
+[data-theme='dark'] .btn-primary:hover { background: #a0622a; color: #fff8ef; }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  color: var(--color-text-muted); font-size: var(--text-sm); font-weight: 500;
+  padding: var(--space-3) var(--space-5); border-radius: var(--radius-full); text-decoration: none;
+  border: 1px solid var(--color-border);
+}
+.btn-ghost:hover { color: var(--color-primary); border-color: var(--color-primary); }
+.hero-art { position: relative; }
+.hero-card {
+  background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-xl);
+  padding: var(--space-6); box-shadow: var(--shadow-lg);
+}
+.swatch-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); margin-bottom: var(--space-5); }
+.swatch { aspect-ratio: 1; border-radius: var(--radius-full); box-shadow: var(--shadow-sm), inset 0 0 0 1px rgba(46,36,24,0.08); }
+.hero-card .quote { font-family: var(--font-display); font-size: var(--text-lg); line-height: 1.4; color: var(--color-text-muted); }
+.hero-card .quote strong { color: var(--color-text); font-weight: 500; }
+
+/* sections */
+.section { max-width: 1080px; margin: 0 auto; padding: clamp(var(--space-12), 6vw, var(--space-20)) var(--space-6); }
+.section-head { display: flex; align-items: baseline; gap: var(--space-4); margin-bottom: var(--space-8); }
+.kicker { font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent); }
+h2.section-title { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 500; }
+
+/* selector */
+.selector-card {
+  background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-xl);
+  padding: clamp(var(--space-6), 4vw, var(--space-10)); box-shadow: var(--shadow-md);
+}
+.selector-block { margin-bottom: var(--space-8); }
+.selector-block:last-of-type { margin-bottom: 0; }
+.selector-label { display: flex; align-items: center; gap: var(--space-2); font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-4); }
+.selector-label .num { font-size: var(--text-xs); font-weight: 600; color: #fff8ef; background: var(--color-accent); width: 1.6em; height: 1.6em; display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius-full); flex: none; }
+.chip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-3); }
+.chip {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--space-2);
+  padding: var(--space-4) var(--space-3); border: 1.5px solid var(--color-border); border-radius: var(--radius-lg);
+  background: var(--color-surface-2); font-size: var(--text-sm); font-weight: 500; color: var(--color-text-muted);
+  text-align: center;
+}
+.chip:hover { border-color: var(--color-accent); }
+.chip[aria-pressed='true'] { border-color: var(--color-primary); background: var(--color-primary-highlight); color: var(--color-text); box-shadow: var(--shadow-sm); }
+.chip svg { color: var(--color-text-faint); }
+.chip[aria-pressed='true'] svg { color: var(--color-accent); }
+.chip .hint { font-size: var(--text-xs); color: var(--color-text-faint); font-weight: 400; }
+.chip[aria-pressed='true'] .hint { color: var(--color-text-muted); }
+.texture-row .chip-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+.undertone-tests { margin-top: var(--space-5); display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-3); }
+.test-card { background: var(--color-surface-2); border-radius: var(--radius-md); padding: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
+.test-card strong { display: block; color: var(--color-text); font-size: var(--text-xs); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: var(--space-1); }
+
+/* results */
+#results { scroll-margin-top: var(--space-16); }
+.results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-5); }
+.result-card {
+  background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-xl);
+  padding: var(--space-6); box-shadow: var(--shadow-sm);
+}
+.result-card h3 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 600; margin-bottom: var(--space-1); }
+.result-card .sub { font-size: var(--text-sm); color: var(--color-accent); margin-bottom: var(--space-4); }
+.reco-list { display: flex; flex-direction: column; gap: var(--space-3); }
+.reco { padding-left: var(--space-4); border-left: 2px solid var(--color-primary-highlight); }
+.reco strong { display: block; font-size: var(--text-base); margin-bottom: var(--space-1); }
+.reco p { font-size: var(--text-sm); color: var(--color-text-muted); }
+.reco .why { display: block; margin-top: var(--space-1); font-size: var(--text-xs); color: var(--color-accent); font-style: normal; }
+.chip-mini { display: inline-block; font-size: var(--text-xs); font-weight: 500; padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); background: var(--color-primary-highlight); color: var(--color-primary-hover); margin: 0 var(--space-1) var(--space-1) 0; }
+[data-theme='dark'] .chip-mini { color: var(--color-primary-hover); }
+.avoid-box { margin-top: var(--space-4); padding: var(--space-4); background: var(--color-surface-2); border-radius: var(--radius-md); font-size: var(--text-sm); color: var(--color-text-muted); }
+.avoid-box strong { color: var(--color-text); }
+
+/* color palette display */
+.palette-card { grid-column: 1 / -1; }
+.palette-swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--space-4); margin-top: var(--space-5); }
+.swatch-card { text-align: left; }
+.swatch-card .color-blob { height: 84px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm), inset 0 0 0 1px rgba(46,36,24,0.1); margin-bottom: var(--space-3); }
+.swatch-card .name { font-weight: 500; font-size: var(--text-sm); }
+.swatch-card .note { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); }
+
+/* trends */
+.trend-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-5); }
+.trend-card { background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-xl); padding: var(--space-6); box-shadow: var(--shadow-sm); }
+.trend-card h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-3); }
+.trend-card p { font-size: var(--text-sm); color: var(--color-text-muted); }
+.trend-card .tag { display: inline-block; font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); margin-bottom: var(--space-2); }
+
+/* care */
+.care-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-5); }
+.care-card { background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-xl); padding: var(--space-6); }
+.care-card h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-3); display: flex; align-items: center; gap: var(--space-2); }
+.care-card h3 svg { color: var(--color-accent); flex: none; }
+.care-card ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+.care-card li { font-size: var(--text-sm); color: var(--color-text-muted); padding-left: var(--space-4); position: relative; }
+.care-card li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 5px; height: 5px; border-radius: 50%; background: var(--color-accent); }
+
+/* stylist tips */
+.tips-wrap { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: var(--space-8); align-items: start; }
+.pull-quote {
+  font-family: var(--font-display); font-size: var(--text-xl); line-height: 1.35; font-style: italic;
+  color: var(--color-text-muted); border-left: 3px solid var(--color-accent); padding-left: var(--space-5);
+}
+.tip-list { display: flex; flex-direction: column; gap: var(--space-5); }
+.tip { display: grid; grid-template-columns: auto 1fr; gap: var(--space-4); align-items: start; }
+.tip .num { font-family: var(--font-display); font-size: var(--text-xl); color: var(--color-accent); font-weight: 600; }
+.tip h3 { font-size: var(--text-base); font-weight: 600; margin-bottom: var(--space-1); }
+.tip p { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+/* checklist */
+.checklist-card { background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-xl); padding: clamp(var(--space-6), 4vw, var(--space-10)) var(--space-6) var(--space-8); box-shadow: var(--shadow-md); margin-top: var(--space-8); }
+.checklist-head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-6); }
+.checklist-head h3 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 600; }
+.checklist-head .count { font-size: var(--text-sm); color: var(--color-text-muted); }
+.check-item { display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid var(--color-divider); cursor: pointer; }
+.check-item:last-child { border-bottom: none; }
+.check-item input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.check-box {
+  flex: none; width: 1.35em; height: 1.35em; border: 1.5px solid var(--color-border); border-radius: var(--radius-sm);
+  display: inline-flex; align-items: center; justify-content: center; margin-top: 0.2em; color: transparent;
+}
+.check-item input:checked ~ .check-box { background: var(--color-primary); border-color: var(--color-primary); color: var(--check-mark); }
+.check-item input:focus-visible ~ .check-box { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.check-item .label { font-size: var(--text-sm); }
+.check-item input:checked ~ .label { color: var(--color-text); }
+.check-item .why { display: block; font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-1); text-decoration: none; }
+.check-item input:checked ~ .why { color: var(--color-text-muted); opacity: 0.8; }
+.reset-link { font-size: var(--text-sm); color: var(--color-text-muted); text-decoration: underline; text-underline-offset: 3px; background: none; }
+.reset-link:hover { color: var(--color-primary); }
+
+/* sources */
+.sources-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-3); }
+.sources-list li { font-size: var(--text-sm); color: var(--color-text-muted); }
+.sources-list a { color: var(--color-text); text-underline-offset: 3px; }
+.sources-list a:hover { color: var(--color-primary); }
+.src { font-size: var(--text-xs); color: var(--color-accent); white-space: nowrap; text-decoration: underline; text-underline-offset: 2px; }
+.src:hover { color: var(--color-primary-hover); }
+
+/* footer */
+.footer { border-top: 1px solid var(--color-divider); margin-top: var(--space-16); }
+.footer-inner { max-width: 1080px; margin: 0 auto; padding: var(--space-8) var(--space-6); font-size: var(--text-sm); color: var(--color-text-muted); display: flex; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; gap: var(--space-8); }
+  .tips-wrap { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .nav { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="#top" class="logo" aria-label="Вернуться к началу">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 4c-5 0-9 4-9 9 0 6 3 8 4 8s2-1 2-3c0-2 1-3 3-3s3 1 3 3c0 2 1 3 2 3s4-2 4-8c0-5-4-9-9-9z"/><path d="M16 4c-1.5 2-2 4-2 6" stroke-width="1.4"/></svg>
+      Волосы и Цвет
+    </a>
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#selector">Подбор</a>
+      <a href="#trends">Тренды</a>
+      <a href="#care">Уход</a>
+      <a href="#tips">Советы стилистов</a>
+      <a href="#checklist">Чек-лист</a>
+    </nav>
+    <button class="theme-btn" data-theme-toggle aria-label="Переключить тему">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="hero-title">
+  <div>
+    <p class="kicker" style="margin-bottom:var(--space-4)">Интерактивный гид</p>
+    <h1 id="hero-title">Стрижка и цвет, <em>которые вас преображают</em></h1>
+    <p class="hero-lead">Выберите форму лица, подтон кожи и текстуру волос — гид подберёт стрижки, челки и оттенки, объяснит почему они работают, и подготовит вас к визиту в салон.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="#selector">Подобрать образ
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7-7 7 7"/></svg>
+      </a>
+      <a class="btn-ghost" href="#checklist">Чек-лист для салона</a>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="hero-card">
+      <div class="swatch-row" aria-hidden="true">
+        <div class="swatch" style="background:#e8b88a"></div>
+        <div class="swatch" style="background:#c47f4a"></div>
+        <div class="swatch" style="background:#9a5b28"></div>
+        <div class="swatch" style="background:#5c3a21"></div>
+      </div>
+      <p class="quote">Естественная глубина и несколько близких оттенков в одном окрашивании — главная идея сезона осень‑2026: такой подход придаёт волосам объём и выглядит естественнее.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTOR -->
+<section class="section" id="selector" aria-labelledby="selector-title">
+  <div class="section-head">
+    <p class="kicker">Шаг за шагом</p>
+    <h2 class="section-title" id="selector-title">Ваш профиль</h2>
+  </div>
+  <div class="selector-card">
+    <div class="selector-block">
+      <p class="selector-label"><span class="num" aria-hidden="true">1</span> Форма лица</p>
+      <div class="chip-grid" role="group" aria-label="Форма лица">
+        <button class="chip" data-face="oval" aria-pressed="false">
+          <svg width="34" height="42" viewBox="0 0 34 42" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="17" cy="21" rx="10" ry="14"/></svg>
+          Овальная
+          <span class="hint">Длина чуть больше ширины, плавные линии</span>
+        </button>
+        <button class="chip" data-face="round" aria-pressed="false">
+          <svg width="34" height="42" viewBox="0 0 34 42" fill="none" stroke="currentColor" stroke-width="2"><circle cx="17" cy="21" r="13"/></svg>
+          Круглая
+          <span class="hint">Ширина и длина примерно равны, мягкие щёки</span>
+        </button>
+        <button class="chip" data-face="square" aria-pressed="false">
+          <svg width="34" height="42" viewBox="0 0 34 42" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="26" height="26" rx="4"/></svg>
+          Квадратная
+          <span class="hint">Лоб, скулы и челюсть одинаковой ширины</span>
+        </button>
+        <button class="chip" data-face="heart" aria-pressed="false">
+          <svg width="34" height="42" viewBox="0 0 34 42" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8 L29 6 L26 20 L17 34 L8 20 L5 6 Z" stroke-linejoin="round"/></svg>
+          Сердечко
+          <span class="hint">Широкий лоб, сужение к подбородку</span>
+        </button>
+      </div>
+      <p style="margin-top:var(--space-4);font-size:var(--text-sm);color:var(--color-text-muted)">Не уверены? Уберите волосы назад, посмотрите в зеркало и обведите контур лица — сравните с силуэтами выше.</p>
+    </div>
+
+    <div class="selector-block">
+      <p class="selector-label"><span class="num" aria-hidden="true">2</span> Подтон кожи</p>
+      <div class="chip-grid" role="group" aria-label="Подтон кожи">
+        <button class="chip" data-tone="warm" aria-pressed="false">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="14" fill="#e8b88a"/></svg>
+          Тёплый
+          <span class="hint">Персиковая, золотистая кожа</span>
+        </button>
+        <button class="chip" data-tone="cool" aria-pressed="false">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="14" fill="#e6c4c4"/></svg>
+          Холодный
+          <span class="hint">Розоватая, фарфоровая кожа</span>
+        </button>
+        <button class="chip" data-tone="neutral" aria-pressed="false">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="14" fill="#dfc9b4"/></svg>
+          Нейтральный
+          <span class="hint">Смешивается и с золотом, и с серебром</span>
+        </button>
+        <button class="chip" data-tone="unknown" aria-pressed="false">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><circle cx="17" cy="17" r="13"/><path d="M12 19c1.5 2 8.5 2 10 0"/></svg>
+          Не знаю
+          <span class="hint">Гид покажет варианты для обсуждения с мастером</span>
+        </button>
+      </div>
+      <div class="undertone-tests">
+        <div class="test-card"><strong>Тест на вены — приблизительный</strong>Посмотрите на вены на запястье при дневном свете: зеленоватые чаще указывают на тёплый подтон, синеватые — на холодный. Это ориентир, а не точная диагностика.</div>
+        <div class="test-card"><strong>Тест на украшения — приблизительный</strong>Золото и латунь чаще освежают тёплый подтон; серебро и платина — холодный. Если идёт и то, и другое — скорее всего, подтон нейтральный.</div>
+        <div class="test-card"><strong>Важное различие</strong>Подтон — это оттенок под поверхностью кожи, он не равен её светлоте (светлая/смуглая) и не покрывает весь сезонный цветотип целиком. Если сомневаетесь — определите подтон с мастером на очной консультации.</div>
+      </div>
+    </div>
+
+    <div class="selector-block texture-row">
+      <p class="selector-label"><span class="num" aria-hidden="true">3</span> Текстура волос</p>
+      <div class="chip-grid" role="group" aria-label="Текстура волос">
+        <button class="chip" data-texture="straight" aria-pressed="false">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 4v26M17 4v26M24 4v26"/></svg>
+          Прямые
+        </button>
+        <button class="chip" data-texture="wavy" aria-pressed="false">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8c4-4 8 4 12 0s8 4 10 0M6 17c4-4 8 4 12 0s8 4 10 0M6 26c4-4 8 4 12 0s8 4 10 0"/></svg>
+          Волнистые
+        </button>
+        <button class="chip" data-texture="curly" aria-pressed="false">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6a5 5 0 0 1 5 5c0 3-4 3-4 6a4 4 0 0 0 8 0c0-4-5-5-5-9a5 5 0 0 1 10 0c0 4-5 5-5 9a4 4 0 0 0 8 0c0-3-4-3-4-6a5 5 0 0 1 5-5"/></svg>
+          Кудрявые
+        </button>
+        <button class="chip" data-texture="fine" aria-pressed="false">
+          <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 4v26" stroke-dasharray="2 4"/></svg>
+          Тонкие
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section" id="results" aria-labelledby="results-title" hidden>
+  <div class="section-head">
+    <p class="kicker">Ваш персональный результат</p>
+    <h2 class="section-title" id="results-title">Рекомендации для вашего профиля</h2>
+  </div>
+  <p id="result-summary" style="margin-bottom:var(--space-8);color:var(--color-text-muted)"></p>
+  <div class="results-grid" id="results-grid"></div>
+</section>
+
+<!-- TRENDS -->
+<section class="section" id="trends" aria-labelledby="trends-title">
+  <div class="section-head">
+    <p class="kicker">Сезон осень–2026</p>
+    <h2 class="section-title" id="trends-title">Что в тренде</h2>
+  </div>
+  <div class="trend-grid">
+    <article class="trend-card">
+      <p class="tag">Стрижки</p>
+      <h3>Многослойные стрижки</h3>
+      <p>Слои добавляют движение и объём, обрамляют лицо и легко укладываются. Стилисты советуют начинать слои чуть ниже подбородка — это вытягивает лицо и смягчает черты. Многослойность — главный инструмент «преображения без жертвы длины». <a class="src" href="https://www.instyle.com/haircuts-for-each-face-shape-12036957" target="_blank" rel="noopener">InStyle</a></p>
+    </article>
+    <article class="trend-card">
+      <p class="tag">Челки</p>
+      <h3>Челка-шторка</h3>
+      <p>Удлинённые пряди расходятся от центра к скулам и мягко обрамляют лицо, не перекрывая его. Самый адаптивный вариант челки: акцентирует скулы и взгляд, не требует ежемесячной коррекции и эстетично отрастает. Хорошо работает и как «лёгкое» освежение образа. <a class="src" href="https://www.pravda.ru/news/beauty/2422192-perfect-bangs-styling-guide/" target="_blank" rel="noopener">Правда.ру</a></p>
+    </article>
+    <article class="trend-card">
+      <p class="tag">Цвет</p>
+      <h3>Медная гамма</h3>
+      <p>Светлая (золотистая) медь, насыщенная медь, имбирный и корица — главные оттенки сезона. Колористы отмечают: медные и каштаново‑рыжие тона особенно выразительно смотрятся в тёплой осенней палитре — шоколадном, бордовом, хаки. <a class="src" href="https://lady.mail.ru/compilations/595730-samyj-modnyj-tsvet-volos-na-osen-2026/" target="_blank" rel="noopener">Леди Mail.ru</a></p>
+    </article>
+    <article class="trend-card">
+      <p class="tag">Цвет</p>
+      <h3>Каштановая глубина</h3>
+      <p>Глубокий каштаново‑рыжий, кофейные тона (капучино, кофе с молоком) и красно‑каштановый с винным подтоном. Тренд — «естественная глубина»: несколько близких оттенков в одном окрашивании, которые придают объём и выглядят максимально натурально. <a class="src" href="https://style.rbc.ru/beauty/69329da99a79477bb494e3d8" target="_blank" rel="noopener">РБК Стиль</a></p>
+    </article>
+    <article class="trend-card">
+      <p class="tag">Техника</p>
+      <h3>Плавное окрашивание</h3>
+      <p>Переходы между оттенками почти незаметны, волосы красиво и естественно отрастают без резких границ — не нужно часто подкрашивать корни. «Мягкий контур» (пряди у лица на 1–2 тона светлее) освежает образ почти всем. <a class="src" href="https://style.rbc.ru/beauty/69329da99a79477bb494e3d8" target="_blank" rel="noopener">РБК Стиль</a></p>
+    </article>
+    <article class="trend-card">
+      <p class="tag">Философия</p>
+      <h3>Натуральность и низкие затраты</h3>
+      <p>Общий вектор сезона — естественные мягкие тона и окрашивание с «внутренним свечением». Колористы советуют выбирать техники, которые не требуют сложного ухода и постоянных манипуляций: образ должен оставаться живым и простым в поддержке. <a class="src" href="https://style.rbc.ru/beauty/69329da99a79477bb494e3d8" target="_blank" rel="noopener">РБК Стиль</a></p>
+    </article>
+  </div>
+</section>
+
+<!-- CARE -->
+<section class="section" id="care" aria-labelledby="care-title">
+  <div class="section-head">
+    <p class="kicker">Поддержание результата</p>
+    <h2 class="section-title" id="care-title">Уход</h2>
+  </div>
+  <div class="care-grid">
+    <article class="care-card">
+      <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M12 22v-6M2 12h6M22 12h-6"/><circle cx="12" cy="12" r="3"/></svg>Стрижка и форма <a class="src" href="https://www.instyle.com/haircuts-for-each-face-shape-12036957" target="_blank" rel="noopener">InStyle</a></h3>
+      <ul>
+        <li>График коррекции стрижки и челки согласуйте с мастером под вашу структуру и форму — они не одинаковы для всех. Челка‑шторка обычно требует реже коррекции, чем резкие геометрические чёлки.</li>
+        <li>Многослойные стрижки оживляются текстурирующим спреем или лёгким кремом — наносите на влажные волосы.</li>
+        <li>Сушите слои феном с направлением «от лица» — так стрижка раскрывает задуманную форму.</li>
+        <li>Тонким волосам не хватает «веса» для слоёв — просите мастера сохранить плотность у корней и градуировать только край.</li>
+      </ul>
+    </article>
+    <article class="care-card">
+      <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 21c-2.5-2-4-5-4-8 0-5 4-9 9-9s9 4 9 9c0 3-1.5 6-4 8"/><path d="M8 13c0-2 1.8-4 4-4s4 2 4 4-1.8 3-4 3-4-1-4-3z"/></svg>Окрашенные волосы <a class="src" href="https://lady.mail.ru/compilations/595730-samyj-modnyj-tsvet-volos-na-osen-2026/" target="_blank" rel="noopener">Леди Mail.ru</a></h3>
+      <ul>
+        <li>Медные и рыжие пигменты — самые «нестойкие»: вымываются быстрее всего. Мойте голову реже и прохладной водой.</li>
+        <li>Используйте шампунь и бальзам «для окрашенных волос» — они мягче очищают и запечатывают пигмент.</li>
+        <li>Между окрашиваниями освежайте цвет оттеночной маской или бальзамом с медным пигментом.</li>
+        <li>Перед феном, утюжком или плойкой — обязательно термозащита, особенно если волосы осветляли.</li>
+      </ul>
+    </article>
+    <article class="care-card">
+      <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21c-4-3-8-6.5-8-11a8 8 0 0 1 16 0c0 4.5-4 8-8 11z"/><path d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>Здоровье волос</h3>
+      <ul>
+        <li>Чередуйте уход по состоянию волос: увлажняющие маски — когда волосам не хватает мягкости, белковые и керамидные — когда не хватает плотности. Частоту тоже подбирайте по ощущениям, а не по единому расписанию.</li>
+        <li>После осветления или агрессивного окрашивания сделайте перерыв перед следующей процедурой — длительность подскажет мастер по состоянию волос.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- STYLIST TIPS -->
+<section class="section" id="tips" aria-labelledby="tips-title">
+  <div class="section-head">
+    <p class="kicker">Эффект свежести</p>
+    <h2 class="section-title" id="tips-title">Советы стилистов</h2>
+  </div>
+  <div class="tips-wrap">
+    <blockquote class="pull-quote">Стрижка и цвет работают на образ тогда, когда соответствуют естественному поведению волос в повседневной жизни — а не только на фото из журнала.</blockquote>
+    <div class="tip-list">
+      <div class="tip"><span class="num">01</span><div><h3>Свет у лица — главный освежающий приём</h3><p>Пряди у лица на 1–2 тона светлее основного цвета («мягкий контур») визуально освежают цвет лица и смягчают черты. Работает мягче полного осветления. <a class="src" href="https://style.rbc.ru/beauty/69329da99a79477bb494e3d8" target="_blank" rel="noopener">РБК Стиль</a></p></div></div>
+      <div class="tip"><span class="num">02</span><div><h3>Не удлиняйте то, что уже сбалансировано</h3><p>Главная ошибка — «тянуть» пропорции: очень длинные плоские пряди без слоёв утяжеляют овал и вытягивают лицо ещё сильнее. Слои возвращают движение и лёгкость. <a class="src" href="https://www.luxyhair.com/blogs/hair-blog/hairstyles-for-different-face-shapes" target="_blank" rel="noopener">Luxy Hair</a></p></div></div>
+      <div class="tip"><span class="num">03</span><div><h3>Ориентируйтесь не на возраст, а на густоту</h3><p>Универсально «старящих» стрижек не существует. Стиль и длина должны опираться на естественную густоту волос, архитектуру лица и направление роста прядей — это и создаёт эффект свежести. <a class="src" href="https://www.pravda.ru/news/beauty/2422192-perfect-bangs-styling-guide/" target="_blank" rel="noopener">Правда.ру</a></p></div></div>
+      <div class="tip"><span class="num">04</span><div><h3>Челка — самый быстрый «переключатель» образа</h3><p>Хотите перемен без жертв? Начните с удлинённых прядей до скул — их легко вписать в каскадную стрижку, убрать за уши или заколоть. Понравится — переходите к полноценной шторке. <a class="src" href="https://www.pravda.ru/news/beauty/2422192-perfect-bangs-styling-guide/" target="_blank" rel="noopener">Правда.ру</a></p></div></div>
+      <div class="tip"><span class="num">05</span><div><h3>Контраст с глазами решает</h3><p>Оттенок волос должен либо сделать глаза ярче, либо подчеркнуть их цвет. Золотым оттенкам во внешности идут коричневые тона; дымчато‑прохладные каштаны — фарфоровой коже и серо‑голубым глазам. <a class="src" href="https://style.rbc.ru/beauty/69329da99a79477bb494e3d8" target="_blank" rel="noopener">РБК Стиль</a></p></div></div>
+      <div class="tip"><span class="num">06</span><div><h3>Кудри и вихры требуют «запаса длины»</h3><p>Челка на вьющихся волосах после высыхания заметно «подпрыгивает» — просите мастера стричь с запасом. Вихры на лбу означают более тщательную ежедневную укладку. <a class="src" href="https://www.pravda.ru/news/beauty/2422192-perfect-bangs-styling-guide/" target="_blank" rel="noopener">Правда.ру</a></p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section class="section" id="checklist" aria-labelledby="checklist-title">
+  <div class="section-head">
+    <p class="kicker">Возьмите с собой</p>
+    <h2 class="section-title" id="checklist-title">Чек-лист вопросов мастеру</h2>
+  </div>
+  <div class="checklist-card">
+    <div class="checklist-head">
+      <h3>Отметьте вопросы, которые хотите задать</h3>
+      <div>
+        <span class="count" id="check-count">Отмечено 0 из 12</span>
+        <button class="reset-link" id="check-reset" style="margin-left:var(--space-4)">Сбросить</button>
+      </div>
+    </div>
+    <div id="checklist-items"></div>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<section class="section" id="sources" aria-labelledby="sources-title">
+  <div class="section-head">
+    <p class="kicker">Материалы</p>
+    <h2 class="section-title" id="sources-title">Источники</h2>
+  </div>
+  <ul class="sources-list">
+    <li><a href="https://style.rbc.ru/beauty/69329da99a79477bb494e3d8" target="_blank" rel="noopener">РБК Стиль — Окрашивание волос 2026: модные техники</a></li>
+    <li><a href="https://lady.mail.ru/compilations/595730-samyj-modnyj-tsvet-volos-na-osen-2026/" target="_blank" rel="noopener">Леди Mail.ru — Самый модный цвет волос осени 2026</a></li>
+    <li><a href="https://www.pravda.ru/news/beauty/2422192-perfect-bangs-styling-guide/" target="_blank" rel="noopener">Правда.ру — Челка-шторка, микрочелка или воздушная: советы стилистов</a></li>
+    <li><a href="https://www.luxyhair.com/blogs/hair-blog/hairstyles-for-different-face-shapes" target="_blank" rel="noopener">Luxy Hair — Hairstyles for Different Face Shapes</a></li>
+    <li><a href="https://www.instyle.com/haircuts-for-each-face-shape-12036957" target="_blank" rel="noopener">InStyle — The Most Flattering Haircuts for Every Face Shape</a></li>
+    <li><a href="https://www.garnierusa.com/tips-how-tos/the-best-hair-shade-for-your-skin-tone" target="_blank" rel="noopener">Garnier — Choosing Hair Colors for Your Skin Tone</a></li>
+  </ul>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p>Интерактивный гид по прическам и цвету волос · сезон осень 2026</p>
+    <p>Рекомендации носят общий характер — итоговый выбор всегда за очной консультацией с мастером.</p>
+  </div>
+</footer>
+
+<script>
+/* theme */
+(function () {
+  var t = document.querySelector('[data-theme-toggle]'), r = document.documentElement;
+  var d = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+  r.setAttribute('data-theme', d);
+  t.addEventListener('click', function () {
+    d = d === 'dark' ? 'light' : 'dark';
+    r.setAttribute('data-theme', d);
+    t.setAttribute('aria-label', d === 'dark' ? 'Включить светлую тему' : 'Включить тёмную тему');
+    t.innerHTML = d === 'dark'
+      ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+      : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  });
+})();
+
+/* data */
+var FACE_DATA = {
+  oval: {
+    name: 'овального лица',
+    summary: 'Овал — самая универсальная форма: скулы чуть шире лба и подбородка, линии мягкие. Стратегия — не нарушать баланс: экспериментируйте смело, но избегайте того, что «вытягивает» или «режет» пропорции.',
+    cuts: {
+      recos: [
+        { title: 'Стрижка до плеч с мягкими слоями', text: 'Движение без лишней длины — слои добавляют живость, не утяжеляя овал.', why: 'Стилисты советуют не удлинять то, что уже сбалансировано' },
+        { title: 'Классический боб или удлинённый боб (лоб)', text: 'Прямой срез подчёркивает линию челюсти и скул — овал это выдерживает идеально.', why: 'Овалу подходят почти все длины и формы — от коротких до длинных' }
+      ],
+      tags: ['Боб', 'Лоб', 'Каскад', 'Длинные слои'],
+      avoid: 'Однослойные длинные пряди без движения и тяжёлая прямая челка от виска до виска — они «сжимают» лицо и лишают образ лёгкости.'
+    },
+    bangs: {
+      recos: [
+        { title: 'Челка-шторка', text: 'Удлинённые пряди расходятся к скулам, обрамляют лицо и акцентируют глаза — классика для овала.', why: 'Шторка подчёркивает скулы и взгляд, не перекрывая лицо' },
+        { title: 'Косая (side-swept) челка', text: 'Добавляет изящества и обрамляет лицо, не нарушая пропорций овала.', why: 'Рекомендация стилистов-знаменитостей для овальной формы' }
+      ],
+      tags: ['Шторка', 'Косая', 'Воздушная'],
+      avoid: 'Полностью закрытый лоб — визуально делает верхнюю часть лица массивнее.'
+    }
+  },
+  round: {
+    name: 'круглого лица',
+    summary: 'Круглое лицо — мягкие углы, полные щёки, ширина и длина примерно равны. Цель — добавить вертикали и углов: вытянуть лицо, обозначить линию роста волос и скулы.',
+    cuts: {
+      recos: [
+        { title: 'Длинные слои, начиная на 5 см ниже подбородка', text: 'Вертикальные линии слоёв визуально вытягивают круглое лицо и добавляют размерность.', why: 'Слои «разбивают» округлость — совет стилистов' },
+        { title: 'Асимметричный боб (A-line, длиннее спереди)', text: 'Углы и диагональ противодействуют мягкости круглой формы.', why: 'A-line боб добавляет углы, которые уравновешивают круглое лицо' }
+      ],
+      tags: ['A-line боб', 'Лонг-боб', 'Каскад ниже подбородка'],
+      avoid: 'Прятать лицо за «стеной волос» — это делает его визуально шире. Избегайте очень коротких однослойных стрижек без текстуры.'
+    },
+    bangs: {
+      recos: [
+        { title: 'Челка-шторка', text: 'Мягкий пробор по центру и вертикальная линия прядей визуально удлиняют лицо.', why: 'Шторка создаёт вертикаль, которая «вытягивает» круглое лицо' },
+        { title: 'Высокая макушка (объём сверху)', text: 'Объём на макушке удлиняет лицо и создаёт иллюзию овала.', why: 'Совет стилистов для круглого лица' }
+      ],
+      tags: ['Шторка', 'Косая удлинённая'],
+      avoid: 'Мягкие редкие челки, закрывающие лоб полностью, и прямая тяжёлая челка — обе делают лицо шире и короче.'
+    }
+  },
+  square: {
+    name: 'квадратного лица',
+    summary: 'Квадратное лицо — выраженная линия челюсти, лоб, скулы и челюсть одинаковой ширины. Цель — смягчить углы: волны, слои и мягкие линии вместо жёсткой геометрии.',
+    cuts: {
+      recos: [
+        { title: 'Длинные мягкие слои, начиная ниже челюсти', text: 'Слои и волны смягчают углы и добавляют движение, снижая акцент на «квадратность».', why: 'Стилисты советуют мягкие, «текучие» формы вместо резких линий' },
+        { title: 'Локоны или лёгкие волны', text: 'Beach waves и свободные локоны округляют углы челюсти.', why: 'Мягкие волны смягчают углы квадратного лица' }
+      ],
+      tags: ['Многослойный каскад', 'Лоб с волнами', 'Удлинённый боб'],
+      avoid: 'Густая прямая челка и гладко зачёсанные назад волосы — подчёркивают углы и делают лицо визуально шире. Если у вас природные кудри — обсуждайте с мастером распределение объёма и длину, сохраняя естественный завиток.'
+    },
+    bangs: {
+      recos: [
+        { title: 'Челка-шторка', text: 'Мягкое движение прядей к лицу сглаживает углы челюсти и лба.', why: 'Шторка с мягким движением к лицу — рекомендация для квадратного лица' },
+        { title: 'Косая рваная (wispy) челка', text: 'Диагональные линии «разбивают» квадратность силуэта.', why: 'Wispy челка создаёт диагональ, смягчающую углы' }
+      ],
+      tags: ['Шторка', 'Wispy', 'Косая'],
+      avoid: 'Густая прямая челка и микрочелка — обе акцентируют жёсткую геометрию лба и челюсти.'
+    }
+  },
+  heart: {
+    name: 'лица-сердечка',
+    summary: 'Сердечко — широкий лоб и сужение к подбородку. Цель — сбалансировать низ: добавить ширины на уровне челюсти и смягчить верхнюю часть лица.',
+    cuts: {
+      recos: [
+        { title: 'Лоб до плеч или чуть ниже', text: 'Добавляет объёма на уровне челюсти — визуально уравновешивает широкий верх.', why: 'Волны у челюсти добавляют ширины там, где её не хватает' },
+        { title: 'Длинные слои до ключиц', text: 'Слои создают визуальную ширину на уровне нижней трети лица.', why: 'Рекомендация стилистов для heart-формы' }
+      ],
+      tags: ['Лоб', 'Каскад до ключиц', 'Волны'],
+      avoid: 'Короткая прямая челка — акцентирует узкий подбородок. Пробор строго по центру при «вдовьем мыске» — сделайте пробор чуть сбоку.'
+    },
+    bangs: {
+      recos: [
+        { title: 'Челка-шторка', text: 'Мягко обрамляет лоб, не заостряя внимания на его ширине.', why: 'Шторка мягко «прикрывает» широкий лоб' },
+        { title: 'Косая длинная челка', text: 'Диагональ переносит акцент с широкого лба на глаза и скулы.', why: 'Side bangs — рекомендация стилистов для heart-формы' }
+      ],
+      tags: ['Шторка', 'Косая длинная'],
+      avoid: 'Короткая прямая челка — усиливает контраст «широкий верх — узкий низ».'
+    }
+  }
+};
+
+var TONE_DATA = {
+  warm: {
+    name: 'тёплого подтона кожи',
+    palette: [
+      { name: 'Золотистая медь', hex: '#c47f4a', note: 'Мягкий вариант с золотистыми бликами — деликатное изменение цвета' },
+      { name: 'Насыщенная медь', hex: '#b3642e', note: 'Яркий сезонный оттенок; на солнце даёт золотистые блики' },
+      { name: 'Тёплый шоколад', hex: '#6b4226', note: 'Коричнево‑шоколадные тона — тренд сезона для тёплого цветотипа' },
+      { name: 'Корица', hex: '#8b5a2b', note: 'Тёплый оттенок с уходом в коричневый — спокойная гамма' },
+      { name: 'Капучино', hex: '#7a5636', note: 'Кофейная гамма — мягкий вариант для тёплой кожи' },
+      { name: 'Тёплый блонд «ангора»', hex: '#d9b98a', note: 'Мягкий натуральный блонд — не холодный и не ультрабелый' }
+    ],
+    why: 'Тёплому подтону идут золотистые и медные тона: они «подхватывают» персиковые и золотистые нюансы кожи, придавая ей сияние.',
+    avoid: 'Пепельные и ультрахолодные блонды — на тёплой коже выглядят «серыми», кожа кажется тусклой.'
+  },
+  cool: {
+    name: 'холодного подтона кожи',
+    summary: '',
+    palette: [
+      { name: 'Приглушённая медь', hex: '#a86538', note: 'Спокойная медь «как корица» — актуальный тон; совместимость с холодной кожей уточните у мастера' },
+      { name: 'Дымчато‑каштановый', hex: '#4e3a2e', note: 'Прохладный коричневый с едва заметным серым — для фарфоровой кожи' },
+      { name: 'Бургунди', hex: '#6e2b34', note: 'Винные оттенки подчёркивают холодный подтон' },
+      { name: 'Пепельный блонд', hex: '#c9b8a8', note: 'Холодные нюансы блонда — комплементарны розоватой коже' },
+      { name: 'Мокка', hex: '#4a3325', note: 'Тёмная холодная гамма — хорошо на смуглой холодной коже' },
+      { name: 'Каштаново‑рыжий', hex: '#7d4522', note: 'Глубокий тон — совместимость с холодным подтоном лучше оценить мастеру' }
+    ],
+    why: 'Холодному подтону идут пепельные, винные и дымчато‑каштановые тона: они гармонируют с розовато‑фарфоровым нюансом кожи.',
+    avoid: 'Ярко‑золотистые и рыжие «тёплые» оттенки без балансировки — могут подчеркнуть красноту кожи.'
+  },
+  neutral: {
+    name: 'нейтрального подтона кожи',
+    palette: [
+      { name: 'Корица', hex: '#8b5a2b', note: 'Тёплый коричневый — комфортно для нейтральной кожи' },
+      { name: 'Красно‑каштановый', hex: '#6d3b26', note: 'Хорошо смотрится на тёплом и нейтральном подтоне кожи' },
+      { name: 'Каштаново‑рыжий', hex: '#7d4522', note: 'Глубокий насыщенный тон — сохраняет глубину цвета' },
+      { name: 'Кофе с молоком', hex: '#8a6647', note: 'Мягкий нейтрально‑коричневый — беспроигрышный вариант' },
+      { name: 'Медный балаяж', hex: '#b3703f', note: 'Акварельный балаяж с медными акцентами — универсален' },
+      { name: 'Тёплый блонд', hex: '#d4b48c', note: 'Нейтральному подтону подходят почти все тёплые оттенки' }
+    ],
+    why: 'Нейтральный подтон — самый гибкий: вам подходят и тёплые, и прохладные тона. Колористы советуют отталкиваться от контраста с глазами.',
+    avoid: 'Резких контрастов «сам на себе»: выбирайте оттенок на 1–2 тона светлее или темнее натурального, а не в противоположную крайность.'
+  },
+  unknown: {
+    name: 'неопределённого подтона',
+    palette: [
+      { name: 'Корица', hex: '#8b5a2b', note: 'Тёплый коричневый — популярная отправная точка для обсуждения с мастером' },
+      { name: 'Кофе с молоком', hex: '#8a6647', note: 'Мягкий нейтрально‑коричневый — вариант для сравнения на консультации' },
+      { name: 'Медный балаяж', hex: '#b3703f', note: 'Лёгкие медные акценты — сначала попробуйте в технике, а не в полный тон' },
+      { name: 'Каштаново‑рыжий', hex: '#7d4522', note: 'Глубокий тон — если хочется сохранить тёмную базу' },
+      { name: 'Тёплый блонд', hex: '#d4b48c', note: 'Мягкий блонд — сначала проверьте подтон у мастера' },
+      { name: 'Приглушённая медь', hex: '#a86538', note: 'Спокойный медный «как корица» — обсудите совместимость с подтоном' }
+    ],
+    why: 'Не определились с подтоном? Выберите один‑два нейтральных оттенка и покажите мастеру — он определит подтон при вас и скорректирует гамму. Приём «мягкий контур» у лица освежает образ почти всем независимо от подтона.',
+    avoid: 'Радикальных перемен до консультации: сначала определите подтон (ориентиры выше), потом выбирайте гамму.'
+  }
+};
+
+var TEXTURE_NOTE = {
+  straight: 'На прямых волосах слои видны максимально чётко: просите мастера стричь с запасом длины — прямые пряди «ложатся» длиннее, чем кудрявые. Гладкий боб без слоёв — тоже отличный вариант.',
+  wavy: 'Волнистые волосы идеальны для многослойных стрижек: волна раскрывает слои и создаёт движение без укладки. Достаточно лёгкого текстурирующего крема.',
+  curly: 'Кудри требуют запаса длины: после высыхания пряди заметно «подпрыгивают». Слои на кудрях распределяют объём — избегайте «треугольной» формы, просите градуировку.',
+  fine: 'Тонким волосам нужна плотность у корней: избегайте сильной филировки, градуируйте только самый край. Многослойность добавит объёма, но слишком короткие верхние слои могут «разлетаться».'
+};
+
+var CHECKLIST = [
+  { q: 'Подойдёт ли эта стрижка структуре и густоте моих волос?', why: 'Не все стрижки «выживают» на тонких или очень густых волосах — мастер должен оценить реальность, а не только фото' },
+  { q: 'Сколько времени займёт ежедневная укладка этой стрижки?', why: 'Каскад и шторка требуют укладки; уточните, как стричь «под вашу жизнь», а не «под фото»' },
+  { q: 'Как часто нужно корректировать стрижку и челку?', why: 'График подбирается под вашу структуру волос и форму — уточните у мастера' },
+  { q: 'Достижим ли этот оттенок с моей текущей базой волос?', why: 'Тёмные или ранее окрашенные волосы могут потребовать осветления — это отдельная процедура' },
+  { q: 'Понадобится ли осветление и сколько визитов это займёт?', why: 'Сложные оттенки могут потребовать несколько приёмов — спросите конкретный план под вашу базу' },
+  { q: 'Какой уход нужен после такого окрашивания?', why: 'Медные и рыжие пигменты вымываются быстрее — уточните средства и частоту освежения' },
+  { q: 'Как часто нужно тонировать/подкрашивать корни?', why: 'Плавное окрашивание отрастает мягче — это влияет на бюджет' },
+  { q: 'Сколько будет стоить вся процедура с учётом всех визитов?', why: 'Спросите итоговую сумму за весь цикл, а не только первый визит' },
+  { q: 'Какой подтон у моей кожи и какая гамма мне подойдёт?', why: 'Хороший колорист определит подтон при вас и подберёт гамму' },
+  { q: 'Как оттенок повлияет на цвет моих глаз и бровей?', why: 'Оттенок должен либо сделать глаза ярче, либо подчеркнуть их цвет' },
+  { q: 'Можно ли увидеть фото работ мастера в похожей технике?', why: 'Портфолио на ваших типе волос и цвете — лучший предсказатель результата' },
+  { q: 'Что делать, если результат мне не понравится — как корректируем?', why: 'Обсудите «путь к откату» заранее: тонирование, стрижка-коррекция, время' }
+];
+
+/* state + render */
+var state = { face: null, tone: null, texture: null };
+
+function chipGroup(attr) {
+  return Array.prototype.slice.call(document.querySelectorAll('.chip[data-' + attr + ']'));
+}
+['face', 'tone', 'texture'].forEach(function (attr) {
+  chipGroup(attr).forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var val = btn.getAttribute('data-' + attr);
+      state[attr] = state[attr] === val ? null : val;
+      chipGroup(attr).forEach(function (b) {
+        b.setAttribute('aria-pressed', b === btn && state[attr] === val ? 'true' : 'false');
+      });
+      render();
+    });
+  });
+});
+
+function recoHtml(r) {
+  return '<div class="reco"><strong>' + r.title + '</strong><p>' + r.text + '<span class="why">' + r.why + '</span></p></div>';
+}
+
+function textureCaveat(attr) {
+  // returns an extra note about layers/bangs adapted to selected texture, or empty string
+  var t = state.texture;
+  if (!t) return '';
+  var notes = {
+    straight: attr === 'cuts'
+      ? 'На прямых волосах слои читаются очень чётко — попросите мастера сохранить плотность у корней, чтобы концы не «разлетались». '
+      : 'На прямых волосах шторка держит форму лучше всего — следите за ровным пробором и не переусердствуйте с филировкой. ',
+    wavy: attr === 'cuts'
+      ? 'На волнистых волосах слои раскрываются сами — укладка минимальная, но уточните у мастера распределение объёма. '
+      : 'На волнистых волосах шторка распадается мягко и естественно — достаточно лёгкой укладки феном. ',
+    curly: attr === 'cuts'
+      ? 'На кудрявых волосах природный завиток остаётся — обсуждайте с мастером распределение объёма и запас длины (завиток «подпрыгивает» при высыхании), а не выпрямление. '
+      : 'На кудрявых волосах шторка потребует запаса длины и регулярной укладки — просите мастера стричь с запасом. ',
+    fine: attr === 'cuts'
+      ? 'На тонких волосах избегайте сильной филировки — просите сохранить плотность у корней и градуировать только край. '
+      : 'На тонких волосах шторка может распадаться — сохраняйте плотность у корней и градуируйте только самый край. '
+  };
+  return '<div class="reco"><strong>Оговорка под вашу текстуру</strong><p>' + notes[t] + '</p></div>';
+}
+
+function render() {
+  var results = document.getElementById('results');
+  if (!state.face) {
+    results.hidden = true;
+    return;
+  }
+  results.hidden = false;
+  var face = FACE_DATA[state.face];
+  var tone = TONE_DATA[state.tone || 'unknown'];
+  var texture = state.texture || null;
+
+  var faceNames = { oval: 'овальная', round: 'круглая', square: 'квадратная', heart: 'сердечко' };
+  var toneNames = { warm: 'тёплый', cool: 'холодный', neutral: 'нейтральный', unknown: 'не определён' };
+
+  document.getElementById('result-summary').textContent =
+    'Профиль: форма лица — ' + faceNames[state.face] + ', подтон — ' + toneNames[state.tone || 'unknown'] +
+    (texture ? ', текстура — ' + ({ straight: 'прямые', wavy: 'волнистые', curly: 'кудрявые', fine: 'тонкие' }[texture]) : '') + '.';
+
+  var html = '';
+
+  /* cuts card */
+  html += '<article class="result-card"><h3>Стрижки</h3><p class="sub">для ' + face.name + ' · <a class="src" href="https://www.luxyhair.com/blogs/hair-blog/hairstyles-for-different-face-shapes" target="_blank" rel="noopener">Luxy Hair</a></p><div class="reco-list">' +
+    face.cuts.recos.map(recoHtml).join('') + textureCaveat('cuts') +
+    '</div><div style="margin-top:var(--space-4)">' + face.cuts.tags.map(function (t) { return '<span class="chip-mini">' + t + '</span>'; }).join('') + '</div>' +
+    '<div class="avoid-box"><strong>Чего избегать:</strong> ' + face.cuts.avoid + '</div></article>';
+
+  /* bangs card */
+  html += '<article class="result-card"><h3>Челки</h3><p class="sub">для ' + face.name + ' · <a class="src" href="https://www.instyle.com/haircuts-for-each-face-shape-12036957" target="_blank" rel="noopener">InStyle</a></p><div class="reco-list">' +
+    face.bangs.recos.map(recoHtml).join('') + textureCaveat('bangs') +
+    '</div><div style="margin-top:var(--space-4)">' + face.bangs.tags.map(function (t) { return '<span class="chip-mini">' + t + '</span>'; }).join('') + '</div>' +
+    '<div class="avoid-box"><strong>Чего избегать:</strong> ' + face.bangs.avoid + '</div></article>';
+
+  /* texture card */
+  if (texture) {
+    html += '<article class="result-card"><h3>Текстура</h3><p class="sub">что учесть</p><div class="reco-list">' +
+      '<div class="reco"><strong>Особенность ваших волос</strong><p>' + TEXTURE_NOTE[texture] + '</p></div>' +
+      '</div></article>';
+  }
+
+  /* color palette card */
+  html += '<article class="result-card palette-card"><h3>Оттенки</h3><p class="sub">для ' + tone.name + ' · <a class="src" href="https://www.garnierusa.com/tips-how-tos/the-best-hair-shade-for-your-skin-tone" target="_blank" rel="noopener">Garnier</a></p>' +
+    '<p style="font-size:var(--text-sm);color:var(--color-text-muted)">' + tone.why + '</p>' +
+    '<div class="palette-swatches">' + tone.palette.map(function (p) {
+      return '<div class="swatch-card"><div class="color-blob" style="background:' + p.hex + '"></div><div class="name">' + p.name + '</div><div class="note">' + p.note + '</div></div>';
+    }).join('') + '</div>' +
+    '<div class="avoid-box" style="margin-top:var(--space-5)"><strong>Осторожно с:</strong> ' + tone.avoid + '</div></article>';
+
+  /* salon note card */
+  html += '<article class="result-card"><h3>Перед салоном</h3><p class="sub">обсудите с мастером</p><div class="reco-list">' +
+    '<div class="reco"><strong>Реалистичность оттенка</strong><p>Текущая база волос (ранее окрашенные, тёмные, седые) может ограничить достижимость цвета за один визит. Покажите мастеру фото текущего состояния и спросите план в 1–2 шага.</p></div>' +
+    '<div class="reco"><strong>Бюджет и частота</strong><p>Медные оттенки требуют более частого тонирования — уточните полную стоимость цикла, включая уход.</p></div>' +
+    '</div><p style="margin-top:var(--space-4)"><a class="btn-ghost" href="#checklist">Перейти к чек-листу</a></p></article>';
+
+  document.getElementById('results-grid').innerHTML = html;
+}
+
+/* checklist */
+(function () {
+  var wrap = document.getElementById('checklist-items');
+  var count = document.getElementById('check-count');
+  CHECKLIST.forEach(function (item, i) {
+    var lab = document.createElement('label');
+    lab.className = 'check-item';
+    lab.innerHTML = '<input type="checkbox" id="ck' + i + '"><span class="check-box" aria-hidden="true">' +
+      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span>' +
+      '<span class="label">' + item.q + '<span class="why">' + item.why + '</span></span>';
+    wrap.appendChild(lab);
+  });
+  function update() {
+    var n = wrap.querySelectorAll('input:checked').length;
+    count.textContent = 'Отмечено ' + n + ' из ' + CHECKLIST.length;
+  }
+  wrap.addEventListener('change', update);
+  document.getElementById('check-reset').addEventListener('click', function () {
+    wrap.querySelectorAll('input').forEach(function (el) { el.checked = false; });
+    update();
+  });
+  update();
+})();
+</script>
+</body>
+</html>
